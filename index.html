@@ -11,46 +11,33 @@
     <title>World Clock Project by Arlene Runyon</title>
   </head>
   <body>
-    <h1>World Clock</h1>
     <div class="container">
-      <select>
-        <option value="">Select a city</option>
-        <option value="">Jerusalem 🇮🇱</option>
-        <option value="">New York 🇺🇸</option>
-        <option value="">Tokyo 🇯🇵</option>
-        <option value="">Manila 🇵🇭</option>
+      <h1>World Clock</h1>
+
+      <select id="city">
+        <option value="">Select a city ...</option>
+        <option value="">Jerusalem</option>
+        <option value="">New York</option>
+        <option value="">Tokyo</option>
+        <option value="">Manila</option>
       </select>
 
-      <div class="city" id="sydney">
-        <div>
-          <h2>Sydney 🇦🇺</h2>
-          <div class="date">August 13th, 2023</div>
+      <div class="cities">
+        <div class="city" id="sydney">
+          <div>
+            <h2>Sydney</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
         </div>
-        <div class="time">11:35:14 <small> AM </small></div>
-      </div>
 
-      <div class="city" id="toronto">
-        <div>
-          <h2>Toronto 🇨🇦</h2>
-          <div class="date">August 13th, 2023</div>
+        <div class="city" id="berlin">
+          <div>
+            <h2>Berlin</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
         </div>
-        <div class="time">11:35:14 <small> AM </small></div>
-      </div>
-
-      <div class="city" id="berlin">
-        <div>
-          <h2>Berlin 🇩🇪</h2>
-          <div class="date">August 13th, 2023</div>
-        </div>
-        <div class="time">11:35:14 <small> AM </small></div>
-      </div>
-
-      <div class="city" id="taiwan">
-        <div>
-          <h2>Taiwan 🇹🇼</h2>
-          <div class="date">August 13th, 2023</div>
-        </div>
-        <div class="time">11:35:14 <small> AM </small></div>
       </div>
     </div>
     <footer>

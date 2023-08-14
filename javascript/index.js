@@ -1,44 +1,52 @@
 function updateTime() {
   let sydneyElement = document.querySelector("#sydney");
-  let sydneyDateElement = sydneyElement.querySelector(".date");
-  let sydneyTimeElement = sydneyElement.querySelector(".time");
-  let sydneyTime = moment().tz("Australia/Sydney");
+  if (sydneyElement) {
+    let sydneyDateElement = sydneyElement.querySelector(".date");
+    let sydneyTimeElement = sydneyElement.querySelector(".time");
+    let sydneyTime = moment().tz("Australia/Sydney");
 
-  sydneyDateElement.innerHTML = sydneyTime.format("MMMM Do YYYY");
-  sydneyTimeElement.innerHTML = sydneyTime.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
-
-  let torontoElement = document.querySelector("#toronto");
-  let torontoDateElement = torontoElement.querySelector(".date");
-  let torontoTimeElement = torontoElement.querySelector(".time");
-  let torontoTime = moment().tz("Canada/Toronto");
-
-  torontoDateElement.innerHTML = torontoTime.format("MMMM Do YYYY");
-  torontoTimeElement.innerHTML = torontoTime.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
+    sydneyDateElement.innerHTML = sydneyTime.format("MMMM Do YYYY");
+    sydneyTimeElement.innerHTML = sydneyTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
 
   let berlinElement = document.querySelector("#berlin");
-  let berlinDateElement = berlinElement.querySelector(".date");
-  let berlinTimeElement = berlinElement.querySelector(".time");
-  let berlinTime = moment().tz("Europe/Berlin");
+  if (berlinElement) {
+    let berlinDateElement = berlinElement.querySelector(".date");
+    let berlinTimeElement = berlinElement.querySelector(".time");
+    let berlinTime = moment().tz("Europe/Berlin");
 
-  berlinDateElement.innerHTML = berlinTime.format("MMMM Do YYYY");
-  berlinTimeElement.innerHTML = berlinTime.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
+    berlinDateElement.innerHTML = berlinTime.format("MMMM Do YYYY");
+    berlinTimeElement.innerHTML = berlinTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+}
 
-  let taiwanElement = document.querySelector("#taiwan");
-  let taiwanDateElement = taiwanElement.querySelector(".date");
-  let taiwanTimeElement = taiwanElement.querySelector(".time");
-  let taiwanTime = moment().tz("Asia/Taiwan");
-
-  taiwanDateElement.innerHTML = taiwanTime.format("MMMM Do YYYY");
-  taiwanTimeElement.innerHTML = taiwanTime.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+  <div class="city">
+    <div>
+      <h2>${cityName}</h2>
+      <div class="date">${cityTime.format("MMMM	Do YYYY")}</div>
+    </div>
+    <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format(
+    "A"
+  )}</small></div>
+  </div>
+  `;
 }
 
 updateTime();
 setInterval(updateTime, 1000);
+
+let citiesSelectElement = document.querySelector("#city");
+citiesSelectElement.addEventListener("change", updateCity);
