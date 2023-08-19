@@ -1,5 +1,5 @@
 body {
-  background: lightgray;
+  background: url(https://img.freepik.com/premium-photo/illustration-famous-monument-world_117023-16.jpg?w=1480);
   font-family: sans-serif;
 }
 
@@ -60,5 +60,5 @@ select {
 footer {
   text-align: center;
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgb(0, 0, 0, 0.8);
 }
